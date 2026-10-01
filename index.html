@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مستشفى الجياحي التخصصي - Al-Jayyahi Hospital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ============================================================
+           CSS RESET & GLOBAL
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: #f0f4f8;
+            color: #1a1a2e;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* ============================================================
+           VARIABLES
+           ============================================================ */
+        :root {
+            --primary: #0a5c7e;
+            --primary-dark: #063d56;
+            --primary-light: #1a7ca0;
+            --secondary: #1b8c5b;
+            --secondary-light: #26b679;
+            --gold: #d4a84b;
+            --gold-light: #f0d68a;
+            --gold-glow: rgba(212, 168, 75, 0.15);
+            --white: #ffffff;
+            --light-bg: #f0f4f8;
+            --dark: #0f1a24;
+            --text: #1a1a2e;
+            --text-secondary: #4a5568;
+            --shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 12px 50px rgba(0, 0, 0, 0.12);
+            --shadow-gold: 0 8px 40px rgba(212, 168, 75, 0.2);
+            --radius: 16px;
+            --radius-round: 50px;
+            --font: 'Tajawal', sans-serif;
+            --gradient-primary: linear-gradient(135deg, #0a5c7e, #1a7ca0);
+            --gradient-secondary: linear-gradient(135deg, #1b8c5b, #26b679);
+            --gradient-gold: linear-gradient(135deg, #d4a84b, #f0d68a);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* ============================================================
+           SCROLLBAR
+           ============================================================ */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-light);
+        }
+
+        /* ============================================================
+           HEADER
+           ============================================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(10, 92, 126, 0.08);
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 900;
+            box-shadow: 0 4px 20px rgba(10, 92, 126, 0.25);
+            flex-shrink: 0;
+        }
+
+        .brand-text .main-title {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+
+        .brand-text .sub-title {
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: var(--secondary);
+            letter-spacing: 1px;
+        }
+
+        .header-spacer {
+            flex: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(10, 92, 126, 0.06);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            right: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+            transform: translateX(50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 60%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 6px 12px;
+            transition: var(--transition);
+        }
+
+        .menu-toggle:hover {
+            color: var(--primary-light);
+            transform: scale(1.1);
+        }
+
+        /* ============================================================
+           HERO SECTION
+           ============================================================ */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 24px 60px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e8eef5 100%);
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230a5c7e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: #fff;
+            padding: 6px 24px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(10, 92, 126, 0.2);
+            animation: pulseBadge 3s infinite;
+        }
+
+        @keyframes pulseBadge {
+            0%,
+            100% {
+                box-shadow: 0 4px 20px rgba(10, 92, 126, 0.2);
+            }
+            50% {
+                box-shadow: 0 4px 40px rgba(10, 92, 126, 0.4);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 .gold-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 .green-text {
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto 30px;
+            line-height: 1.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 34px;
+            background: var(--gradient-primary);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-family: var(--font);
+            box-shadow: 0 4px 20px rgba(10, 92, 126, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(10, 92, 126, 0.35);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 34px;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-family: var(--font);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(10, 92, 126, 0.15);
+        }
+
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 34px;
+            background: var(--gradient-gold);
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-family: var(--font);
+            box-shadow: 0 4px 20px var(--gold-glow);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px var(--gold-glow);
+        }
+
+        /* ============================================================
+           STATS BAR
+           ============================================================ */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-width: 1000px;
+            margin: 30px auto 0;
+            padding: 0 20px;
+        }
+
+        .stat-item {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 18px 16px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stat-item .number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-item .label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* ============================================================
+           SECTIONS
+           ============================================================ */
+        .section {
+            padding: 70px 24px;
+            position: relative;
+        }
+
+        .section-white {
+            background: var(--white);
+        }
+
+        .section-light {
+            background: var(--light-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 45px;
+        }
+
+        .section-header .tag {
+            display: inline-block;
+            background: rgba(10, 92, 126, 0.08);
+            color: var(--primary);
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 18px;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .section-header h2 .highlight {
+            color: var(--primary);
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .gold-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-gold);
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+
+        /* ============================================================
+           DEPARTMENTS GRID
+           ============================================================ */
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .department-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .department-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        .department-card .card-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .department-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .department-card:hover .card-image img {
+            transform: scale(1.08);
+        }
+
+        .department-card .card-image .overlay {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            padding: 20px 16px 14px;
+            background: linear-gradient(to top, rgba(10, 92, 126, 0.7) 0%, transparent 100%);
+        }
+
+        .department-card .card-image .overlay .badge {
+            display: inline-block;
+            background: var(--gradient-gold);
+            color: var(--dark);
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .department-card .card-body {
+            padding: 18px 20px 20px;
+        }
+
+        .department-card .card-body h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .department-card .card-body .sub-info {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .department-card .card-body .sub-info i {
+            color: var(--primary);
+            margin-left: 4px;
+        }
+
+        .department-card .card-body p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .department-card .card-body .staff-info {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .department-card .card-body .staff-info .row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            padding: 2px 0;
+        }
+
+        .department-card .card-body .staff-info .row .label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .department-card .card-body .staff-info .row .value {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .department-card .card-body .staff-info .phone {
+            display: inline-block;
+            background: rgba(10, 92, 126, 0.06);
+            color: var(--primary);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 6px;
+        }
+
+        .department-card .card-body .staff-info .phone i {
+            margin-left: 6px;
+        }
+
+        .department-card .view-details {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .department-card .view-details i {
+            transition: var(--transition);
+        }
+
+        .department-card:hover .view-details i {
+            transform: translateX(-4px);
+        }
+
+        /* ============================================================
+           ADMIN DEPARTMENTS
+           ============================================================ */
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .admin-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .admin-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 4px;
+            background: var(--gradient-gold);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .admin-card:hover::before {
+            opacity: 1;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+        }
+
+        .admin-card .icon {
+            font-size: 2.8rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .admin-card h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .admin-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .admin-card .phone {
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .admin-card .phone i {
+            margin-left: 6px;
+        }
+
+        .admin-card .view-details {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .admin-card:hover .view-details i {
+            transform: translateX(-4px);
+        }
+
+        /* ============================================================
+           DEPARTMENT DETAILS MODAL
+           ============================================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(15, 44, 89, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: var(--radius);
+            max-width: 700px;
+            width: 100%;
+            padding: 36px 40px;
+            transform: scale(0.8);
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-content .modal-close {
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            color: #a0aec0;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 4px 8px;
+        }
+
+        .modal-content .modal-close:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-content .modal-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .modal-content .modal-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 8px;
+            padding-left: 40px;
+        }
+
+        .modal-content .modal-sub {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            padding-left: 40px;
+        }
+
+        .modal-content .modal-body {
+            font-size: 1rem;
+            line-height: 1.9;
+            color: #4a5568;
+        }
+
+        .modal-content .modal-body .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .modal-content .modal-body .info-grid .info-item {
+            background: var(--light-bg);
+            padding: 12px 16px;
+            border-radius: 10px;
+        }
+
+        .modal-content .modal-body .info-grid .info-item .label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .modal-content .modal-body .info-grid .info-item .value {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .modal-content .modal-body .modal-phone {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 12px;
+        }
+
+        .modal-content .modal-body .modal-phone i {
+            margin-left: 8px;
+        }
+
+        /* ============================================================
+           CONTACT & BOOKING
+           ============================================================ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--white);
+            padding: 16px 22px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateX(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .contact-item .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item .info .label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .contact-item .info .value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .booking-form {
+            background: var(--white);
+            padding: 32px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .booking-form h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: var(--font);
+            transition: var(--transition);
+            background: var(--light-bg);
+            color: var(--dark);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(10, 92, 126, 0.08);
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* ============================================================
+           FAQ
+           ============================================================ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius);
+            margin-bottom: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .faq-header {
+            padding: 18px 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+            -webkit-user-select: none;
+            transition: var(--transition);
+        }
+
+        .faq-header:hover {
+            background: rgba(10, 92, 126, 0.03);
+        }
+
+        .faq-header .question {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        .faq-header .icon {
+            font-size: 1rem;
+            color: var(--primary);
+            transition: transform 0.4s ease;
+        }
+
+        .faq-item.active .faq-header .icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            padding: 0 24px;
+        }
+
+        .faq-item.active .faq-body {
+            max-height: 300px;
+            padding: 0 24px 18px;
+        }
+
+        .faq-body p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 40px 24px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 14px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+
+        .footer-col p {
+            font-size: 0.85rem;
+            line-height: 1.8;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col p i {
+            color: var(--gold-light);
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 30px auto 0;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer-bottom .designer {
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 1024px) {
+            .departments-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .admin-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 8px 16px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 16px;
+                background: var(--white);
+                border: 1px solid rgba(0, 0, 0, 0.06);
+                border-radius: var(--radius);
+                padding: 16px;
+                min-width: 200px;
+                gap: 4px;
+                box-shadow: var(--shadow-hover);
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .departments-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            .section {
+                padding: 50px 16px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-col h4::after {
+                right: 50%;
+                transform: translateX(50%);
+            }
+            .footer-col p {
+                justify-content: center;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-primary,
+            .btn-secondary,
+            .btn-gold {
+                width: 100%;
+                justify-content: center;
+            }
+            .modal-content {
+                padding: 24px 20px;
+            }
+            .modal-content .modal-title {
+                font-size: 1.4rem;
+                padding-left: 30px;
+            }
+            .modal-content .modal-body .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-bar {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .stat-item .number {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .departments-grid {
+                grid-template-columns: 1fr;
+            }
+            .department-card .card-image {
+                height: 140px;
+            }
+            .contact-item {
+                padding: 14px 16px;
+            }
+            .booking-form {
+                padding: 20px 16px;
+            }
+            .brand-text .main-title {
+                font-size: 0.95rem;
+            }
+            .brand-logo {
+                width: 44px;
+                height: 44px;
+                font-size: 1.4rem;
+            }
+            .stat-item {
+                padding: 12px;
+            }
+            .stat-item .number {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ============================================================
+           ANIMATIONS
+           ============================================================ */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+           UTILITY
+           ============================================================ */
+        .text-primary {
+            color: var(--primary);
+        }
+        .text-secondary {
+            color: var(--secondary);
+        }
+        .text-gold {
+            color: var(--gold);
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mt-20 {
+            margin-top: 20px;
+        }
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .w-100 {
+            width: 100%;
+        }
+
+        /* ============================================================
+           EMERGENCY BADGE
+           ============================================================ */
+        .emergency-badge {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 999;
+            background: var(--gradient-primary);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 30px rgba(10, 92, 126, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: pulseBadgeFixed 3s infinite;
+            text-decoration: none;
+        }
+
+        @keyframes pulseBadgeFixed {
+            0%,
+            100% {
+                box-shadow: 0 4px 30px rgba(10, 92, 126, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 50px rgba(10, 92, 126, 0.5);
+            }
+        }
+
+        .emergency-badge i {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 480px) {
+            .emergency-badge {
+                bottom: 16px;
+                left: 16px;
+                padding: 10px 16px;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* ============================================================
+           GOLD DECORATIONS
+           ============================================================ */
+        .gold-border {
+            border: 2px solid var(--gold);
+            border-radius: var(--radius);
+            padding: 4px;
+        }
+
+        .gold-shadow {
+            box-shadow: var(--shadow-gold);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header class="header" id="header">
+        <div class="header-brand">
+            <div class="brand-logo">🏥</div>
+            <div class="brand-text">
+                <span class="main-title">مستشفى الجياحي</span>
+                <span class="sub-title">Al-Jayyahi Hospital</span>
+            </div>
+        </div>
+        <div class="header-spacer"></div>
+        <nav class="nav-links" id="navLinks">
+            <a href="#medical">🏥 طبية</a>
+            <a href="#admin">📋 إدارية</a>
+            <a href="#booking">📅 حجز</a>
+            <a href="#contact">📞 اتصل</a>
+        </nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- ============================================================
+    EMERGENCY BADGE
+    ============================================================ -->
+    <a href="tel:199" class="emergency-badge">
+        <i class="fas fa-phone-alt"></i>
+        <span>طوارئ 24 ساعة</span>
+    </a>
+
+    <!-- ============================================================
+    HERO SECTION
+    ============================================================ -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fas fa-star"></i> رعاية صحية متكاملة</span>
+            <h1>
+                <span class="gold-text">مستشفى الجياحي</span><br>
+                <span class="green-text">صحتكم .. مسؤوليتنا</span>
+            </h1>
+            <p>
+                نقدم لكم أحدث الخدمات الطبية والإدارية بأيدي نخبة من الأطباء والكوادر المؤهلة،
+                في بيئة صحية آمنة ومجهزة بأحدث التقنيات.
+            </p>
+            <div class="hero-buttons">
+                <a href="#medical" class="btn-primary">
+                    <i class="fas fa-stethoscope"></i> الأقسام الطبية
+                </a>
+                <a href="#admin" class="btn-secondary">
+                    <i class="fas fa-building"></i> الأقسام الإدارية
+                </a>
+                <a href="#booking" class="btn-gold">
+                    <i class="fas fa-calendar-check"></i> حجز موعد
+                </a>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat-item animate-on-scroll">
+                    <span class="number">+٢٥</span>
+                    <span class="label">تخصص طبي</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="number">٤٨</span>
+                    <span class="label">طبيب استشاري</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="number">١٢٠</span>
+                    <span class="label">كادر تمريضي</span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="number">٢٤</span>
+                    <span class="label">ساعة خدمة</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============================================================
+    MEDICAL DEPARTMENTS
+    ============================================================ -->
+    <section class="section section-white" id="medical">
+        <div class="section-header">
+            <span class="tag"><i class="fas fa-stethoscope"></i> الأقسام الطبية</span>
+            <h2>خدماتنا <span class="highlight">الطبية</span></h2>
+            <p>أحدث التخصصات الطبية بأيدي نخبة من الأطباء الاستشاريين</p>
+            <div class="gold-divider"></div>
+        </div>
+        <div class="departments-grid">
+            <!-- قسم الطوارئ -->
+            <div class="department-card animate-on-scroll" onclick="openModal('🚑 قسم الطوارئ','استقبال الحالات الطارئة والحرجة على مدار الساعة بفريق طبي متخصص.','د. خالد العنسي','١٢ طبيب + ٢٤ ممرض','713-100-111','قسم%20الطوارى')">
+                <div class="card-image">
+                    <img src="قسم الطوارى.jpg" alt="قسم الطوارئ" onerror="this.style.display='none'">
+                    <div class="overlay"><span class="badge">🚑 24 ساعة</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>🚑 قسم الطوارئ</h3>
+                    <div class="sub-info"><i class="fas fa-clock"></i> 24 ساعة طوال الأسبوع</div>
+                    <p>استقبال الحالات الطارئة والحرجة على مدار الساعة بفريق طبي متخصص.</p>
+                    <div class="staff-info">
+                        <div class="row"><span class="label">المشرف:</span><span class="value">د. خالد العنسي</span></div>
+                        <div class="row"><span class="label">الكادر:</span><span class="value">١٢ طبيب + ٢٤ ممرض</span></div>
+                        <span class="phone"><i class="fas fa-phone-alt"></i> 713-100-111</span>
+                    </div>
+                    <div class="view-details"><i class="fas fa-arrow-left"></i> عرض التفاصيل</div>
+                </div>
+            </div>
+
+            <!-- قسم العمليات -->
+            <div class="department-card animate-on-scroll" onclick="openModal('🔬 قسم العمليات','غرف عمليات مجهزة بأحدث التقنيات لإجراء الجراحات المختلفة.','د. محمد الجياحي','٨ جراحين + ١٦ ممرض','713-100-222','قسم%20العمليات')">
+                <div class="card-image">
+                    <img src="قسم العمليات.jpg" alt="قسم العمليات" onerror="this.style.display='none'">
+                    <div class="overlay"><span class="badge">🔬 متطور</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>🔬 قسم العمليات</h3>
+                    <div class="sub-info"><i class="fas fa-clock"></i> ٨ص - ١٠م</div>
+                    <p>غرف عمليات مجهزة بأحدث التقنيات لإجراء الجراحات المختلفة.</p>
+                    <div class="staff-info">
+                        <div class="row"><span class="label">المشرف:</span><span class="value">د. محمد الجياحي</span></div>
+                        <div class="row"><span class="label">الكادر:</span><span class="value">٨ جراحين + ١٦ ممرض</span></div>
+                        <span class="phone"><i class="fas fa-phone-alt"></i> 713-100-222</span>
+                    </div>
+                    <div class="view-details"><i class="fas fa-arrow-left"></i> عرض التفاصيل</div>
+                </div>
+            </div>
+
+            <!-- قسم العناية الفائقة -->
+            <div class="department-card animate-on-scroll" onclick="openModal('🫀 العناية الفائقة','رعاية مركزة للحالات الحرجة مع مراقبة مستمرة من قبل فريق متخصص.','د. أحمد الجياحي','٦ أطباء + ١٢ ممرض','713-100-333','قسم%20العناية%20الفائقة')">
+                <div class="card-image">
+                    <img src="قسم العنناية الفائقة.jpg"قسم العناية الفائقة" onerror="this.style.display='none'">
+                    <div class="overlay"><span class="badge">🫀 24 ساعة</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>🫀 العناية الفائقة</h3>
+                    <div class="sub-info"><i class="fas fa-clock"></i> 24 ساعة</div>
+                    <p>رعاية مركزة للحالات الحرجة مع مراقبة مستمرة من قبل فريق متخصص.</p>
+                    <div class="staff-info">
+                        <div class="row"><span class="label">المشرف:</span><span class="value">د. أحمد الجياحي</span></div>
+                        <div class="row"><span class="label">الكادر:</span><span class="value">٦ أطباء + ١٢ ممرض</span></div>
+                        <span class="phone"><i class="fas fa-phone-alt"></i> 713-100-333</span>
+                    </div>
+                    <div class="view-details"><i class="fas fa-arrow-left"></i> عرض التفاصيل</div>
+                </div>
+            </div>
+
+            <!-- قسم التمريض -->
+            <div class="department-card animate-on-scroll" onclick="openModal('💉 قسم التمريض','كادر تمريضي مؤهل لتقديم الرعاية الصحية المتكاملة للمرضى.','م. فاطمة الحبشي','١٢٠ ممرض وممرضة','713-100-444','قسم%20التمريض')">
+                <div class="card-image">
+                    <img src="قسم التمريض.jpg" alt="قسم التمريض" onerror="this.style.display='none'">
+                    <div class="overlay"><span class="badge">💉 رعاية</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>💉 قسم التمريض</h3>
+                    <div class="sub-info"><i class="fas fa-clock"></i> على مدار الساعة</div>
+                    <p>كادر تمريضي مؤهل لتقديم الرعاية الصحية المتكاملة للمرضى.</p>
+                    <div class="staff-info">
+                        <div class="row"><span class="label">المشرف:</span><span class="value">م. فاطمة الحبشي</span></div>
+                        <div class="row"><span class="label">الكادر:</span><span class="value">١٢٠ ممرض وممرضة</span></div>
+                        <span class="phone"><i class="fas fa-phone-alt"></i> 713-100-444</span>
+                    </div>
+                    <div class="view-details"><i class="fas fa-arrow-left"></i> عرض التفاصيل</div>
+                </div>
+            </div>
+
+            <!-- قسم المختبر -->
+            <div class="department-card animate-on-scroll" onclick="openModal('🧪 قسم المختبر','تحاليل طبية دقيقة باستخدام أحدث الأجهزة المعملية المتطورة.','د. هدى الكبسي','١٢ أخصائي مختبر','713-100-555','قسم%20المختبر')">
+                <div class="card-image">
+                    <img src="قسم%20المختبر.jpg" alt="قسم المختبر" onerror="this.style.display='none'">
+                    <div class="overlay"><span class="badge">🧪 دقة</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>🧪 قسم المختبر</h3>
+                    <div class="sub-info"><i class="fas fa-clock"></i> ٧ص - ١١م</div>
+                    <p>تحاليل طبية دقيقة باستخدام أحدث الأجهزة المعملية المتطورة.</p>
+                    <div class="staff-info">
+                        <div class="row"><span class="label">المشرف:</span><span class="value">د. هدى الكبسي</span></div>
+                        <div class="row"><span class="label">الكادر:</span><span class="value">١٢ أخصائي مختبر</span></div>
+                        <span class="phone"><i class="fas fa-phone-alt"></i> 713-100-555</span>
+                    </div>
+                    <div class="view-details"><i class="fas fa-arrow-left"></i> عرض التفاصيل</div>
+                </div>
+            </div>
+
+            <!-- قسم الأشعة -->
+            <div class="department-card animate-on-scroll" onclick="openModal('📡 قسم الأشعة','أحدث أجهزة الأشعة للتصوير التشخيصي الدقيق لجميع الحالات.','د. ياسر النهمي','٨ أخصائي أشعة','713-100-666','الاشعة')">
+                <div class="card-image">
+                    <img src="الاشعة (2).jpg" alt="قسم الأشعة" onerror="this.style.display='none'">
+                    <div class="overlay"><span class="badge">📡 متطور</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>📡 قسم الأشعة</h3>
+                    <div class="sub-info"><i class="fas fa-clock"></i> ٨ص - ١٠م</div>
+                    <p>أحدث أجهزة الأشعة للتصوير التشخيصي الدقيق لجميع الحالات.</p>
+                    <div class="staff-info">
+                        <div class="row"><span class="label">المشرف:</span><span class="value">د. ياسر النهمي</span></div>
+                        <div class="row"><span class="label">الكادر:</span><span class="value">٨ أخصائي أشعة</span></div>
+                        <span class="phone"><i class="fas fa-phone-alt"></i> 713-100-666</span>
+                    </div>
+                    <div class="view-details"><i class="fas fa-arrow-left"></i> عرض التفاصيل</div>
+                </div>
+            </div>
+
+            <!-- قسم السجلات الطبية -->
+            <div class="department-card animate-on-scroll" onclick="openModal('📋 السجلات الطبية','تنظيم وحفظ السجلات الطبية للمرضى بشكل إلكتروني وآمن.','أ. نادية الشرفي','٦ موظفين','713-100-777','قسم%20السجلات%20الطبية')">
+                <div class="card-image">
+                    <img src="قسم السجلات الطبية (2).jpg" alt="قسم السجلات الطبية" onerror="this.style.display='none'">
+                    <div class="overlay"><span class="badge">📋 أرشيف</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>📋 السجلات الطبية</h3>
+                    <div class="sub-info"><i class="fas fa-clock"></i> ٨ص - ٦م</div>
+                    <p>تنظيم وحفظ السجلات الطبية للمرضى بشكل إلكتروني وآمن.</p>
+                    <div class="staff-info">
+                        <div class="row"><span class="label">المشرف:</span><span class="value">أ. علي عبيد</span></div>
+                        <div class="row"><span class="label">الكادر:</span><span class="value">٦ موظفين</span></div>
+                        <span class="phone"><i class="fas fa-phone-alt"></i> 713-100-777</span>
+                    </div>
+                    <div class="view-details"><i class="fas fa-arrow-left"></i> عرض التفاصيل</div>
+                </div>
+            </div>
+
+            <!-- قسم التغذية -->
+            <div class="department-card animate-on-scroll" onclick="openModal('🍲 قسم التغذية','توفير وجبات صحية ومتوازنة للمرضى وفق برامج غذائية مدروسة.','أ. سعاد الحميري','٨ أخصائي تغذية','713-100-888','قسم%20التغذية')">
+                <div class="card-image">
+                    <img src="قسم التغذية (2).jpg" alt="قسم التغذية" onerror="this.style.display='none'">
+                    <div class="overlay"><span class="badge">🍲 صحي</span></div>
+                </div>
+                <div class="card-body">
+                    <h3>🍲 قسم التغذية</h3>
+                    <div class="sub-info"><i class="fas fa-clock"></i> ٦ص - ١٠م</div>
+                    <p>توفير وجبات صحية ومتوازنة للمرضى وفق برامج غذائية مدروسة.</p>
+                    <div class="staff-info">
+                        <div class="row"><span class="label">المشرف:</span><span class="value">أ. سعاد الحميري</span></div>
+                        <div class="row"><span class="label">الكادر:</span><span class="value">٨ أخصائي تغذية</span></div>
+                        <span class="phone"><i class="fas fa-phone-alt"></i> 713-100-888</span>
+                    </div>
+                    <div class="view-details"><i class="fas fa-arrow-left"></i> عرض التفاصيل</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+    ADMIN DEPARTMENTS
+    ============================================================ -->
+    <section class="section section-light" id="admin">
+        <div class="section-header">
+            <span class="tag"><i class="fas fa-building"></i> الأقسام الإدارية</span>
+            <h2>إدارة <span class="highlight">متميزة</span></h2>
+            <p>كوادر إدارية مؤهلة لتقديم أفضل الخدمات للمرضى والموظفين</p>
+            <div class="gold-divider"></div>
+        </div>
+
+        <div class="admin-grid">
+
+            <!-- القسم المالي -->
+            <div class="admin-card animate-on-scroll" onclick="openModalAdmin('💰 القسم المالي','إدارة الحسابات المالية، الفواتير، والميزانيات بكفاءة عالية.','أ. عبدالرحمن المخلافي','٨ موظفين','713-200-111')">
+                <span class="icon">💰</span>
+                <h3>القسم المالي</h3>
+                <p>إدارة الحسابات المالية، الفواتير، والميزانيات بكفاءة عالية.</p>
+                <span class="phone"><i class="fas fa-phone-alt"></i> 713-200-111</span>
+                <div style="margin-top:6px;font-size:0.8rem;color:var(--text-secondary);">
+                    <span>المشرف: أ. عبدالرحمن المخلافي</span>
+                </div>
+                <div class="view-details"><i class="fas fa-arrow-left"></i> عرض التفاصيل</div>
+            </div>
+
+            <!-- قسم شؤون الموظفين -->
+            <div class="admin-card animate-on-scroll" onclick="openModalAdmin('👥 قسم شؤون الموظفين','إدارة شؤون الموظفين، الحضور، والرواتب بكفاءة احترافية.','أ. محمد العنسي','١٠ موظفين','713-200-222')">
+                <span class="icon">👥</span>
+                <h3>قسم شؤون الموظفين</h3>
+                <p>إدارة شؤون الموظفين، الحضور، والرواتب بكفاءة احترافية.</p>
+                <span class="phone"><i class="fas fa-phone-alt"></i> 713-200-222</span>
+                <div style="margin-top:6px;font-size:0.8rem;color:var(--text-secondary);">
+                    <span>المشرف: أ. محمد العنسي</span>
+                </div>
+                <div class="view-details"><i class="fas fa-arrow-left"></i> عرض التفاصيل</div>
+            </div>
+
+            <!-- قسم إدارة الأجهزة -->
+            <div class="admin-card animate-on-scroll" onclick="openModalAdmin('🖥️ قسم إدارة الأجهزة','صيانة وتحديث الأجهزة الطبية والتقنية في المستشفى.','م. خالد النهمي','٦ مهندسين','713-200-333')">
+                <span class="icon">🖥️</span>
+                <h3>قسم إدارة الأجهزة</h3>
+                <p>صيانة وتحديث الأجهزة الطبية والتقنية في المستشفى.</p>
+                <span class="phone"><i class="fas fa-phone-alt"></i> 713-200-333</span>
+                <div style="margin-top:6px;font-size:0.8rem;color:var(--text-secondary);">
+                    <span>المشرف: م. خالد النهمي</span>
+                </div>
+                <div class="view-details"><i class="fas fa-arrow-left"></i> عرض التفاصيل</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+    BOOKING & CONTACT SECTION
+    ============================================================ -->
+    <section class="section section-white" id="booking">
+        <div class="section-header">
+            <span class="tag"><i class="fas fa-calendar-check"></i> الحجز والاستفسار</span>
+            <h2>احجز موعدك <span class="highlight">الآن</span></h2>
+            <p>نحن هنا لخدمتك .. احجز موعدك مع أفضل الأطباء بكل سهولة</p>
+            <div class="gold-divider"></div>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-item animate-on-scroll">
+                    <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="info">
+                        <div class="label">للحجز والاستفسار</div>
+                        <div class="value">713-300-111</div>
+                    </div>
+                </div>
+                <div class="contact-item animate-on-scroll">
+                    <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="info">
+                        <div class="label">الطوارئ (٢٤ ساعة)</div>
+                        <div class="value">713-300-222</div>
+                    </div>
+                </div>
+                <div class="contact-item animate-on-scroll">
+                    <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="info">
+                        <div class="label">خدمة العملاء</div>
+                        <div class="value">713-300-333</div>
+                    </div>
+                </div>
+                <div class="contact-item animate-on-scroll">
+                    <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="info">
+                        <div class="label">القسم المالي</div>
+                        <div class="value">713-300-444</div>
+                    </div>
+                </div>
+                <div class="contact-item animate-on-scroll">
+                    <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info">
+                        <div class="label">العنوان</div>
+                        <div class="value">صنعاء - شارع التسعين - بجوار كلية الطب</div>
+                    </div>
+                </div>
+                <div class="contact-item animate-on-scroll">
+                    <div class="icon"><i class="fas fa-clock"></i></div>
+                    <div class="info">
+                        <div class="label">أوقات الدوام</div>
+                        <div class="value">٨ صباحاً - ١٠ مساءً (طوال الأسبوع)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booking-form animate-on-scroll">
+                <h3>📋 نموذج الحجز</h3>
+                <form id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>الاسم الكامل</label>
+                            <input type="text" placeholder="أدخل اسمك الكامل" required>
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <input type="tel" placeholder="--" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>البريد الإلكتروني</label>
+                        <input type="email" placeholder="example@email.com">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>التخصص</label>
+                            <select>
+                                <option>الطوارئ</option>
+                                <option>العمليات</option>
+                                <option>العناية الفائقة</option>
+                                <option>التمريض</option>
+                                <option>المختبر</option>
+                                <option>الأشعة</option>
+                                <option>السجلات الطبية</option>
+                                <option>التغذية</option>
+                                <option>القسم المالي</option>
+                                <option>شؤون الموظفين</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>التاريخ</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>ملاحظات إضافية</label>
+                        <textarea placeholder="أي ملاحظات أو استفسارات..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-100" style="justify-content:center;">
+                        <i class="fas fa-paper-plane"></i> إرسال الطلب
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FAQ SECTION
+    ============================================================ -->
+    <section class="section section-light" id="contact">
+        <div class="section-header">
+            <span class="tag"><i class="fas fa-question-circle"></i> الأسئلة الشائعة</span>
+            <h2>استفسارات <span class="highlight">مهمة</span></h2>
+            <p>أجوبة على أكثر الأسئلة تداولاً حول خدمات المستشفى</p>
+            <div class="gold-divider"></div>
+        </div>
+
+        <div class="faq-list">
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-header">
+                    <span class="question">🕐 ما هي أوقات الدوام الرسمي؟</span>
+                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-body">
+                    <p>أوقات الدوام الرسمي من الساعة ٨ صباحاً حتى ١٠ مساءً طوال أيام الأسبوع، مع توفر قسم الطوارئ على مدار ٢٤ ساعة.</p>
+                </div>
+            </div>
+
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-header">
+                    <span class="question">📋 كيف يمكنني حجز موعد؟</span>
+                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-body">
+                    <p>يمكنك حجز موعد عبر ملء النموذج أعلاه، أو الاتصال على الرقم 713-300-111، أو زيارة قسم الاستقبال في المستشفى.</p>
+                </div>
+            </div>
+
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-header">
+                    <span class="question">🩺 ما هي التخصصات المتوفرة؟</span>
+                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-body">
+                    <p>يتوفر لدينا: الطوارئ، العمليات، العناية الفائقة، التمريض، المختبر، الأشعة، السجلات الطبية، التغذية، والأقسام الإدارية.</p>
+                </div>
+            </div>
+
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-header">
+                    <span class="question">💳 هل تقبلون التأمين الصحي؟</span>
+                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-body">
+                    <p>نعم، نقبل جميع أنواع التأمين الصحي المعتمدة في اليمن، ونسهل إجراءات التعامل مع شركات التأمين.</p>
+                </div>
+            </div>
+
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-header">
+                    <span class="question">🚑 كيف أتواصل مع الطوارئ؟</span>
+                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-body">
+                    <p>يمكنك الاتصال على رقم الطوارئ 713-300-222 على مدار الساعة، أو التوجه مباشرة إلى قسم الطوارئ في المستشفى.</p>
+                </div>
+            </div>
+
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-header">
+                    <span class="question">📊 هل يوجد عروض خاصة؟</span>
+                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-body">
+                    <p>نعم، نقدم عروضاً خاصة للفحوصات الدورية والتحاليل المخبرية، بالإضافة إلى خصومات لحاملي بطاقات التأمين.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    DEPARTMENT DETAILS MODAL
+    ============================================================ -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="إغلاق النافذة">
+                <i class="fas fa-times"></i>
+            </button>
+            <span class="modal-icon" id="modalIcon">🏥</span>
+            <h3 class="modal-title" id="modalTitle">عنوان القسم</h3>
+            <div class="modal-sub" id="modalSub">وصف مختصر للقسم</div>
+            <div class="modal-body" id="modalBody">
+                <p id="modalDescription">نص تفصيلي عن القسم وخدماته.</p>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="label">👨‍⚕️ المشرف</div>
+                        <div class="value" id="modalSupervisor">د. أحمد الجياحي</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">👥 الكادر</div>
+                        <div class="value" id="modalStaff">١٢ طبيب + ٢٤ ممرض</div>
+                    </div>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="label">📞 رقم الاتصال</div>
+                        <div class="value" id="modalPhone">713-100-111</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">🕐 الدوام</div>
+                        <div class="value" id="modalHours">٢٤ ساعة</div>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:8px;">
+                    <a href="tel:713100111" class="modal-phone" id="modalPhoneLink">
+                        <i class="fas fa-phone-alt"></i> اتصل الآن: <span id="modalPhoneDisplay">713-100-111</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>🏥 مستشفى الجياحي</h4>
+                <p><i class="fas fa-map-marker-alt"></i> صنعاء - شارع التسعين</p>
+                <p><i class="fas fa-phone-alt"></i> 713-300-111</p>
+                <p><i class="fas fa-phone-alt"></i> 713-300-222 (طوارئ)</p>
+                <p><i class="fas fa-envelope"></i> info@al-jayyahi.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>📌 روابط سريعة</h4>
+                <p><i class="fas fa-angle-left"></i> الأقسام الطبية</p>
+                <p><i class="fas fa-angle-left"></i> الأقسام الإدارية</p>
+                <p><i class="fas fa-angle-left"></i> حجز موعد</p>
+                <p><i class="fas fa-angle-left"></i> اتصل بنا</p>
+            </div>
+            <div class="footer-col">
+                <h4>🕐 أوقات العمل</h4>
+                <p><i class="fas fa-clock"></i> ٨ص - ١٠م</p>
+                <p><i class="fas fa-clock"></i> طوال أيام الأسبوع</p>
+                <p><i class="fas fa-clock"></i> الطوارئ ٢٤ ساعة</p>
+                <p><i class="fas fa-clock"></i> الإداري ٨ص - ٤م</p>
+            </div>
+            <div class="footer-col">
+                <h4>📞 أرقام الطوارئ</h4>
+                <p><i class="fas fa-phone-alt"></i> 713-300-222</p>
+                <p><i class="fas fa-phone-alt"></i> 713-300-333</p>
+                <p><i class="fas fa-phone-alt"></i> 199 (الطوارئ العامة)</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                🏥 مستشفى الجياحي .. صحتكم مسؤوليتنا 🏥<br>
+                تصميم وتطوير: <span class="designer">أيمن الجياحي</span> | جميع الحقوق محفوظة © 2026
+            </p>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ============================================================
+            // MOBILE MENU TOGGLE
+            // ============================================================
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('open');
+                const icon = this.querySelector('i');
+                if (navLinks.classList.contains('open')) {
+                    icon.className = 'fas fa-times';
+                } else {
+                    icon.className = 'fas fa-bars';
+                }
+            });
+
+            navLinks.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('open');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                });
+            });
+
+            // ============================================================
+            // HEADER SCROLL EFFECT
+            // ============================================================
+            const header = document.getElementById('header');
+
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                if (currentScroll > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // ============================================================
+            // SCROLL ANIMATIONS (Intersection Observer)
+            // ============================================================
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            animateElements.forEach(function(el) {
+                observer.observe(el);
+            });
+
+            // ============================================================
+            // SMOOTH SCROLL
+            // ============================================================
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        const headerHeight = header.offsetHeight;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset -
+                            headerHeight - 20;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // ============================================================
+            // FAQ / ACCORDION
+            // ============================================================
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(function(item) {
+                const header = item.querySelector('.faq-header');
+                header.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
+
+                    faqItems.forEach(function(acc) {
+                        acc.classList.remove('active');
+                    });
+
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // ============================================================
+            // BOOKING FORM
+            // ============================================================
+            const bookingForm = document.getElementById('bookingForm');
+
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('✅ تم استلام طلب الحجز بنجاح!\nسنتواصل معكم خلال ٢٤ ساعة لتأكيد الموعد.');
+                this.reset();
+            });
+
+            // ============================================================
+            // KEYBOARD ACCESSIBILITY
+            // ============================================================
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    menuToggle.querySelector('i').className = 'fas fa-bars';
+                }
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+            console.log('🏥 مستشفى الجياحي - Al-Jayyahi Hospital');
+            console.log('✧ تصميم وتطوير: أيمن الجياحي ✧');
+
+            // ============================================================
+            // MODAL FUNCTIONS
+            // ============================================================
+            const modalOverlay = document.getElementById('modalOverlay');
+            const modalClose = document.getElementById('modalClose');
+            const modalIcon = document.getElementById('modalIcon');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalSub = document.getElementById('modalSub');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalSupervisor = document.getElementById('modalSupervisor');
+            const modalStaff = document.getElementById('modalStaff');
+            const modalPhone = document.getElementById('modalPhone');
+            const modalHours = document.getElementById('modalHours');
+            const modalPhoneLink = document.getElementById('modalPhoneLink');
+            const modalPhoneDisplay = document.getElementById('modalPhoneDisplay');
+
+            let modalHoursText = '';
+
+            function openModal(icon, title, description, supervisor, staff, phone, image, hours) {
+                modalIcon.textContent = icon || '🏥';
+                modalTitle.textContent = title || 'القسم';
+                modalSub.textContent = description || 'وصف القسم';
+                modalDescription.textContent = description || 'وصف تفصيلي للقسم.';
+                modalSupervisor.textContent = supervisor || 'غير محدد';
+                modalStaff.textContent = staff || 'غير محدد';
+                modalPhone.textContent = phone || '713-000-000';
+                modalPhoneDisplay.textContent = phone || '713-000-000';
+                modalPhoneLink.href = 'tel:' + (phone || '713000000');
+                modalHours.textContent = hours || '٨ص - ١٠م';
+
+                // Set hours based on department
+                if (title.includes('الطوارئ') || title.includes('العناية')) {
+                    modalHours.textContent = '٢٤ ساعة';
+                } else if (title.includes('المختبر')) {
+                    modalHours.textContent = '٧ص - ١١م';
+                } else if (title.includes('التغذية')) {
+                    modalHours.textContent = '٦ص - ١٠م';
+                } else if (title.includes('السجلات')) {
+                    modalHours.textContent = '٨ص - ٦م';
+                } else {
+                    modalHours.textContent = '٨ص - ١٠م';
+                }
+
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function openModalAdmin(title, description, supervisor, staff, phone) {
+                modalIcon.textContent = '🏢';
+                modalTitle.textContent = title || 'القسم الإداري';
+                modalSub.textContent = description || 'وصف القسم الإداري';
+                modalDescription.textContent = description || 'وصف تفصيلي للقسم الإداري.';
+                modalSupervisor.textContent = supervisor || 'غير محدد';
+                modalStaff.textContent = staff || 'غير محدد';
+                modalPhone.textContent = phone || '713-000-000';
+                modalPhoneDisplay.textContent = phone || '713-000-000';
+                modalPhoneLink.href = 'tel:' + (phone || '713000000');
+                modalHours.textContent = '٨ص - ٤م (إداري)';
+
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+
+            // Expose modal functions globally
+            window.openModal = openModal;
+            window.openModalAdmin = openModalAdmin;
+            window.closeModal = closeModal;
+
+            // ============================================================
+            // IMAGE FALLBACK HANDLER
+            // ============================================================
+            document.querySelectorAll('.department-card .card-image img').forEach(function(img) {
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    // Show a colored background instead
+                    const parent = this.parentElement;
+                    parent.style.background = 'linear-gradient(135deg, #0a5c7e, #1a7ca0)';
+                    parent.style.display = 'flex';
+                    parent.style.alignItems = 'center';
+                    parent.style.justifyContent = 'center';
+                    parent.style.color = '#fff';
+                    parent.style.fontSize = '3rem';
+                    parent.textContent = '🏥';
+                });
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
